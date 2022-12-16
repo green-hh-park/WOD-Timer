@@ -1,33 +1,146 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 const styles = StyleSheet.create({
   settingContainer: {
     width: "98%",
     height: "98%",
-    backgroundColor: "aquamarine",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#f5f5f5",
+    overflow: "hidden",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
 
 export default function SettingMain() {
+  const editExercise = () => {};
+
+  const addExercise = () => {};
+
   return (
     <View style={styles.settingContainer}>
       {/*운동 설정에 대한 큰 박스*/}
-      <View style={{ width: "100%" }}>
+      <View style={{ width: "100%", backgroundColor: "#fff", height: 170 }}>
         {/*그 안의 돋보기가 속해있는 큰 박스*/}
-        <View style={{ width: "100%" }}>
+        <View style={{ width: "100%", alignItems: "center" }}>
           {/*운동설정, 편집이 들어가 있는 박스*/}
           <View
             style={{
+              padding: 20,
               width: "100%",
               flexDirection: "row",
               justifyContent: "space-between",
             }}
           >
             <Text></Text>
-            <Text>운동설정</Text>
-            <Text>편집</Text>
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>운동 설정</Text>
+            <Pressable onPress={editExercise}>
+              <Text>편집</Text>
+            </Pressable>
+          </View>
+          <View
+            style={{
+              padding: 10,
+              width: "98%",
+              flexDirection: "row",
+              alignItems: "center",
+              backgroundColor: "#F5F5F5",
+            }}
+          >
+            <Image
+              source={require("../../assets/search.png")}
+              style={{ width: 32, height: 32, marginRight: 20 }}
+            />
+            <TextInput
+              style={{
+                width: "100%",
+                height: 40,
+                padding: 10,
+              }}
+            ></TextInput>
+          </View>
+        </View>
+      </View>
+      <Pressable onPress={addExercise}>
+        <View
+          style={{
+            padding: 20,
+            backgroundColor: "#fff",
+            height: 70,
+            width: "100%",
+            marginTop: 5,
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            source={require("../../assets/pushup.png")}
+            style={{ width: 48, height: 48, marginRight: 20 }}
+          />
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>운동 추가</Text>
+        </View>
+      </Pressable>
+      {/* 운동 목록 */}
+      <View style={{ marginTop: 30 }}>
+        {/*운동*/}
+        <View
+          style={{
+            flexDirection: "row",
+            padding: 20,
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 10,
+            backgroundColor: "#fff",
+          }}
+        >
+          {/*타이틀*/}
+          <View>
+            <Text style={{ fontSize: 24, marginBottom: 10 }}>Fran</Text>
+            <Text>턱걸이 21개-쓰러스터21개</Text>
+          </View>
+          <Image
+            source={require("../../assets/check.png")}
+            style={{ width: 48, height: 48 }}
+          />
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            padding: 20,
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 10,
+            backgroundColor: "#fff",
+          }}
+        >
+          {/*타이틀*/}
+          <View>
+            <Text style={{ fontSize: 24, marginBottom: 10 }}>
+              가볍게 달리기
+            </Text>
+            <Text>달리기(25분)</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            padding: 20,
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 10,
+            backgroundColor: "#fff",
+          }}
+        >
+          {/*타이틀*/}
+          <View>
+            <Text style={{ fontSize: 24, marginBottom: 10 }}>TABATA</Text>
+            <Text>버피(40초)-팔굽혀펴기(20초)</Text>
           </View>
         </View>
       </View>
