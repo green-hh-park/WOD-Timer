@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SettingMain from "./src/settings/SettingMain";
+import WorkoutManage from "./src/settings/WorkoutManage";
 
 function HomeScreen() {
   return (
@@ -22,7 +23,11 @@ export default function App() {
           component={SettingMain}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="WorkoutManage" component={SettingMain} />
+        <Stack.Screen
+          name="WorkoutManage"
+          component={WorkoutManage}
+          options={{ headerShown: false }}
+        />
         {/*<Stack.Screen name="Settings" component={SettingMain} />*/}
       </Stack.Navigator>
     </NavigationContainer>

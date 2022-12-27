@@ -69,14 +69,6 @@ export default function SettingMain({ route, navigation }) {
     }
   };
 
-  /*function filterSearch(text) {
-    ((item) => {
-      const itemData = item.title ? item.title.toUpperCase() : "".toUpperCase();
-      const textData = text.toUpperCase();
-      return itemData.indexOf(textData) > -1;
-    })();
-  }*/
-
   // 추후에 data 가져올 axios
   /*useEffect(() => {
     axios.get("./sampleWorkout.json").then(function (response) {
@@ -84,7 +76,22 @@ export default function SettingMain({ route, navigation }) {
     });
   }, []);*/
 
-  const addExercise = () => {};
+  const selectExercise = (param) => {
+    console.log(param);
+    /*axios
+      .post("url", {
+        id: "해당 아이디",
+      })
+      .then(function (response) {
+        // response
+      })
+      .catch(function (error) {
+        // 오류발생시 실행
+      })
+      .finally(function () {
+        // 항상 실행
+      });*/
+  };
 
   return (
     <View style={styles.settingContainer}>
@@ -101,7 +108,7 @@ export default function SettingMain({ route, navigation }) {
               justifyContent: "space-between",
             }}
           >
-            <Text></Text>
+            <Text style={{ width: 55 }}></Text>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>운동 설정</Text>
             <Pressable onPress={() => navigation.navigate("WorkoutManage")}>
               <Text>편집</Text>
@@ -132,8 +139,8 @@ export default function SettingMain({ route, navigation }) {
           </View>
         </View>
       </View>
-      <Pressable onPress={addExercise}>
-        {/*<View
+      {/*<Pressable onPress={addExercise}>
+        <View
           style={{
             padding: 20,
             backgroundColor: "#fff",
@@ -149,38 +156,44 @@ export default function SettingMain({ route, navigation }) {
             style={{ width: 48, height: 48, marginRight: 20 }}
           />
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>운동 추가</Text>
-        </View>*/}
-      </Pressable>
+        </View>
+      </Pressable>*/}
       {/* 운동 목록 */}
       <View style={{ marginTop: 30 }}>
         {filteredDataSource.map((param, idx) => {
           return (
             // 운동
-            <View
+            <Pressable
               key={idx}
-              style={{
-                flexDirection: "row",
-                padding: 20,
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: 10,
-                backgroundColor: "#fff",
+              onPress={() => {
+                selectExercise(idx);
               }}
             >
-              {/*타이틀*/}
-              <View>
-                <Text style={{ fontSize: 24, marginBottom: 10 }}>
-                  {param.title}
-                </Text>
-                <Text>{param.content}</Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  padding: 20,
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: 10,
+                  backgroundColor: "#fff",
+                }}
+              >
+                {/*타이틀*/}
+                <View>
+                  <Text style={{ fontSize: 24, marginBottom: 10 }}>
+                    {param.title}
+                  </Text>
+                  <Text>{param.content}</Text>
+                </View>
+                {param.default === true && (
+                  <Image
+                    source={require("../../assets/check.png")}
+                    style={{ width: 48, height: 48 }}
+                  />
+                )}
               </View>
-              {param.default === true && (
-                <Image
-                  source={require("../../assets/check.png")}
-                  style={{ width: 48, height: 48 }}
-                />
-              )}
-            </View>
+            </Pressable>
           );
         })}
       </View>
